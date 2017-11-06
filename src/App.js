@@ -3,20 +3,20 @@ import logo from './logo.svg';
 import './App.css';
 
 import AddRelease from './AddRelease';
-import ShowReleases from './ShowReleases';
+
 import Horizon from '@horizon/client';
 
 import { Panel } from 'primereact/components/panel/Panel';
 import { InputText } from 'primereact/components/inputtext/InputText';
 import { Button } from 'primereact/components/button/Button';
 
-const _horizon = new Horizon({host: 'localhost:8181'});
-const carCollection = _horizon('carList');
+//const _horizon = new Horizon({host: 'localhost:8181'});
+//const carCollection = _horizon('carList');
 
 class App extends Component {
 
   constructor() {
-    console.log("Add Release Constructor");
+    //console.log("Add Release Constructor");
     super();
     this.state = {
       car: { vin: '', brand: '', color: '' },
@@ -32,7 +32,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    _horizon.connect();
+    /*_horizon.connect();
 
     _horizon
       .onReady()
@@ -51,7 +51,7 @@ class App extends Component {
         this.setState({ carList: allItems }),
       error => console.error(error));
 
-    
+    */
   }
 
   updateProperty(property, value) {
@@ -74,7 +74,7 @@ class App extends Component {
         Color: this.state.car.color
     }*/
     const newCar = this.state.car;
-    carCollection.store(newCar);
+    //carCollection.store(newCar);
     this.setState({ car: { vin: '', brand: '', color: '' } });
   }
 
@@ -89,14 +89,15 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <div style={{ padding: '3px' }} className="ui-g-12">
+        <AddRelease />
+        {/*<div style={{ padding: '3px' }} className="ui-g-12">
           <div style={{ padding: '3px' }} className="ui-g-4">
             <AddRelease />
           </div>
           <div style={{ padding: '3px' }} className="ui-g-8">
             <ShowReleases />
           </div>
-        </div>
+    </div>*/}
 
       </div>
     );
